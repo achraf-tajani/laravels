@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages/commandes');
+});
+
+
+Route::get('/commandes', function () {
+    return view('pages/commandes');
+});
+
+Route::get('/ramassages', function () {
+    return view('pages/ramassages');
 });
