@@ -1,3 +1,37 @@
-body {
-    background-color: #bdc3c7;
+.c-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-filter {
+    width: 20%;
+    background-color: white;
+    min-height: 100px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.c-container {
+    width: 79%;
+    background-color: white;
+    min-height: 100px;
+}
+
+.w3-input {
+    border: 1px solid #EAE6E6;
+    width: 100%;
+}
+
+.date-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.montant-wrap {
+    display: flex;
 }

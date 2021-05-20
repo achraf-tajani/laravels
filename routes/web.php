@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\commandesController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +27,5 @@ Route::get('/commandes', function () {
 Route::get('/ramassages', function () {
     return view('pages/ramassages');
 });
+
+Route::post('/chercherCommande', [commandesController::class, 'chercherCommande']);
