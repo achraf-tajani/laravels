@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\commandesController;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,17 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages/commandes');
-});
+Route::get('/', [commandesController::class, 'commandes']);
 
 
-Route::get('/commandes', function () {
-    return view('pages/commandes');
-});
+Route::get('/commandes', [commandesController::class, 'commandes']);
+
+
+
 
 Route::get('/ramassages', function () {
-    return view('pages/ramassages');
+    return view("pages/ramassages");
 });
-
-Route::post('/chercherCommande', [commandesController::class, 'chercherCommande']);

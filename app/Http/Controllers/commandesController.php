@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Commandes;
+
 
 class commandesController extends Controller
 {
 
-
-    public function chercherCommande()
+    public function commandes()
     {
-        $info = $_POST['info'];
-        // traitement
-
-        $data = array(
-            "fruits"  => array("a" => "orange", "b" => "banana", "c" => "apple"),
-            "numbers" => array(1, 2, 3, 4, 5, 6),
-            "holes"   => array("first", 5 => "second", "third")
-        );
-        return $data;
+        $commande = [];
+        if (isset($_GET['arg'])) {
+            $commande =  Commandes::where('CDE_MGTO',  $_GET['arg'])
+                ->orWhere('NOM', 'like', '%' . $_GET['arg'] . '%')
+                ->orWhere('PRENOM', 'like', '%' . $_GET['arg'] . '%')
+                ->get();
+        } else {
+            $commande =  Commandes::all();
+        }
+        return view('pages/commandes', ['commandes' => $commande]);
     }
 }
