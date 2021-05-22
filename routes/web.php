@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\HollidayController;
 use App\Http\Controllers\commandesController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +19,6 @@ Route::get('/', [commandesController::class, 'commandes']);
 
 
 Route::get('/commandes', [commandesController::class, 'commandes']);
-
-
 
 
 Route::get('/ramassages', function () {

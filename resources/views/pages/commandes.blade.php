@@ -24,10 +24,15 @@
             </div>
         </div>
         <div class="w3-container w3-margin-top">
-            <label>Budget</label>
+            <label>EWMS Status</label>
             <div class="montant-wrap">
-                <input class="w3-input" type="number">
-                <input class="w3-input" type="number">
+                <select>
+                    <option></option>
+                    <option>Open</option>
+                    <option>Close</option>
+                    <option>Empty</option>
+                </select>
+
             </div>
         </div>
         <div class="w3-container w3-margin-top">
@@ -36,33 +41,47 @@
         </div>
 
         <div class="w3-container w3-margin-top w3-center">
-            <button class="w3-btn">chercher</button>
+            <button class="w3-btn w3-red">Reset</button>
+            <button class="w3-btn">Chercher</button>
         </div>
     </form>
     </div>
-
+    <div class="ongle">
+        <i class="o1 fas fa-angle-right"  style="display: none;"></i>
+        <i class="o2 fas fa-angle-left" ></i>
+    </div>
     <div class="c-container" >
         @if ($commandes->count())
         <table class="w3-table">
+            <thead>
             <tr>
-                <td>Nom</td>
-                <td>Prenom</td>
-                <td>Ville</td>
-                <td>Dernier Status</td>
-                <td>Date </td>
-                <td>Ramasse </td>
+                <th class="w3-center">Nom</th>
+                <th class="w3-center">Prenom</th>
+                <th class="w3-center">Ville</th>
+                <th class="w3-center">Ramasse </th>
+                <th class="w3-center">EWMS Status</th>
+                <th class="w3-center">Date </th>
             </tr>
+            </thead>
+            <tbody>
             @foreach ($commandes as $item)
                 <tr>
-                    <td>  {{$item->NOM}}</td>
-                    <td>  {{$item->PRENOM}}</td>
-                    <td>  {{$item->VILLE}}</td>
-                    <td>  {{$item->DERNIER_STATUT}}</td>
-                    <td>  {{$item->DATE_CDE}}</td>
-                    <td>  {{$item->RAMASSE_ID}}</td>
+                    <td class="w3-center">  {{$item->NOM}}</td>
+                    <td class="w3-center">  {{$item->PRENOM}}</td>
+                    <td class="w3-center">  {{$item->VILLE}}</td>
+                    <td class="w3-center {{$item->RAMASSE_LIGNE_STATUT =='TERMINE' ? 'w3-text-light-green' : 'w3-text-red' }} ">  {{$item->RAMASSE_LIGNE_STATUT}}</td>
+                    <td class="w3-center  {{$item->EWMS_STATUS =='Closed' ? 'w3-text-light-green' : 'w3-text-red' }}">  {{$item->EWMS_STATUS}}</td>
+                    <td class="w3-center m-date">  {{$item->DATE_CDE}}</td>
+
                 </tr>
             @endforeach
+            </tbody>
         </table>
+        @else
+        <div class="noData">
+            <i class="fas fa-battery-empty"></i>
+           <span> Aucune donnée disponible</span>
+        </div>
         @endif
     </div>
 </div>

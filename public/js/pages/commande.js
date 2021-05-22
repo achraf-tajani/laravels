@@ -15,4 +15,13 @@ $(function () {
             }
         );
     });
+
+    $(".ongle").click(function () {
+        $(".o2").toggle();
+        $(".o1").toggle();
+        $(".c-filter").toggle("slide");
+    });
+    $(".m-date").each(function () {
+        this.innerHTML = moment(this.innerHTML).format("MMMM Do YYYY");
+    });
 });
