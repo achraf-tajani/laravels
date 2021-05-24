@@ -16,10 +16,20 @@ class commandesController extends Controller
         // ->whereBetween('DATE_CDE', [1, 100])
         // ->get();
         $commande = [];
-        if (isset($_GET['arg'])) {
-            $commande =  Commandes::where('CDE_MGTO',  $_GET['arg'])
-                ->orWhere('NOM', 'like', '%' . $_GET['arg'] . '%')
-                ->orWhere('PRENOM', 'like', '%' . $_GET['arg'] . '%')
+        $arg = "";
+        if (isset($_GET['arg-info']) && !empty($_GET['arg-info'])) {
+            $commande =  Commandes::where('CDE_MGTO',  $_GET['arg-info'])
+                ->orWhere('NOM', 'like', '%' . $_GET['arg-info'] . '%')
+                ->orWhere('PRENOM', 'like', '%' . $_GET['arg-info'] . '%')
+                ->get();
+        } else if (isset($_GET['arg-ewms']) && !empty($_GET['arg-ewms'])) {
+
+            $arg = $_GET['arg-ewms'] === "empty" ? ' ' : $_GET['arg-ewms'];
+            $commande =  Commandes::where('EWMS_STATUS',  $arg)
+                ->get();
+        } else if (isset($_GET['arg-ramasse']) && !empty($_GET['arg-ramasse'])) {
+            $arg = $_GET['arg-ramasse'] === "empty" ? ' ' : $_GET['arg-ramasse'];
+            $commande =  Commandes::where('RAMASSE_LIGNE_STATUT',   $arg)
                 ->get();
         } else {
             $commande =  Commandes::all();

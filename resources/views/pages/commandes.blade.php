@@ -13,7 +13,7 @@
         <h4>Filter</h4>
         <div class="w3-container">
             <label>Commande</label>
-            <input class="w3-input"  name="arg" type="text" placeholder="Nom,Prenom,ID" >
+            <input class="w3-input"  name="arg-info" type="text" placeholder="Nom,Prenom,ID" >
         </div>
 
         <div class="w3-container w3-margin-top">
@@ -26,19 +26,28 @@
         <div class="w3-container w3-margin-top">
             <label>EWMS Status</label>
             <div class="montant-wrap">
-                <select>
+                <select name="arg-ewms">
                     <option></option>
-                    <option>Open</option>
-                    <option>Close</option>
-                    <option>Empty</option>
+                    <option value="Release">Release</option>
+                    <option value="Closed">Close</option>
+                    <option value="empty">Empty</option>
                 </select>
 
             </div>
         </div>
         <div class="w3-container w3-margin-top">
-            <label>Avec Incidents </label>
-            <input class="w3-input" type="text">
+            <label>Ramasse Status</label>
+            <div class="montant-wrap">
+                <select name="arg-ramasse">
+                    <option></option>
+                    <option value="TERMINE">Terminer</option>
+                    <option value="MANQUANT">Manquant</option>
+                    <option value="empty">Empty</option>
+                </select>
+
+            </div>
         </div>
+
 
         <div class="w3-container w3-margin-top w3-center">
             <button class="w3-btn w3-red">Reset</button>
